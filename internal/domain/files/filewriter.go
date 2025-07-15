@@ -19,7 +19,7 @@ func (f *FileWritter) WirteSensorFile(fileName string, data []byte) error {
 		return nil
 	}
 
-	err := writeAtAppData(fileName, data)
+	err = writeAtAppData(fileName, data)
 	if err != nil {
 		return err
 	}
