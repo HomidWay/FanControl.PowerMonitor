@@ -14,6 +14,20 @@ func NewFileWritter() *FileWritter {
 
 func (f *FileWritter) WirteSensorFile(fileName string, data []byte) error {
 
+	err := writeAtExePath(fileName, data)
+	if err == nil {
+		return nil
+	}
+
+	err := writeAtAppData(fileName, data)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func writeAtExePath(fileName string, data []byte) error {
 	exePath, err := os.Executable()
 	if err == nil {
 		exeDir := filepath.Dir(exePath)
@@ -34,8 +48,9 @@ func (f *FileWritter) WirteSensorFile(fileName string, data []byte) error {
 
 		return nil
 	}
+}
 
-	// Fall back to LOCALAPPDATA if executable path fails
+func writeAtAppData(fileName string, data []byte) error {
 	appData := os.Getenv("LOCALAPPDATA")
 	if appData == "" {
 		return fmt.Errorf("LOCALAPPDATA environment variable not set")
