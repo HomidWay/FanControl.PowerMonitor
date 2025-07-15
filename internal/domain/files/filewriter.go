@@ -29,25 +29,26 @@ func (f *FileWritter) WirteSensorFile(fileName string, data []byte) error {
 
 func writeAtExePath(fileName string, data []byte) error {
 	exePath, err := os.Executable()
-	if err == nil {
-		exeDir := filepath.Dir(exePath)
-		filePath := filepath.Join(exeDir, fmt.Sprintf("%s.sensor", fileName))
-		if _, err := os.Stat(filePath); err != nil && !os.IsNotExist(err) {
-			return err
-		}
-
-		err = os.WriteFile(
-			filePath,
-			data,
-			0644,
-		)
-
-		if err != nil {
-			return err
-		}
-
-		return nil
+	if err != nil {
+		return err
 	}
+	exeDir := filepath.Dir(exePath)
+	filePath := filepath.Join(exeDir, fmt.Sprintf("%s.sensor", fileName))
+	if _, err := os.Stat(filePath); err != nil && !os.IsNotExist(err) {
+		return err
+	}
+
+	err = os.WriteFile(
+		filePath,
+		data,
+		0644,
+	)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func writeAtAppData(fileName string, data []byte) error {
