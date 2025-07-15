@@ -43,7 +43,7 @@ To enable shared memory in AIDA64:
 5. (Optional) Combine multiple power sensors using Mix custom sensor with function sum
 
 # NOTE
-1. Power values are presented as Celsius and are divided by 10 as FanControl doesn't support any units other than Celsius/Farenheit, and cures are limited at 200 degrees maximum.
+1. Power values are presented as Celsius and are divided by 10 as FanControl doesn't support any units other than Celsius/Farenheit, and curves are limited at 200 degrees maximum.
 For example if a AIDA64 reports 1000 w, it will be displayed as 100.0 in FanControl.
 
 2. The shared memory interface must remain enabled while PowerReader is running, so AIDA64 has to stay running in the background.
