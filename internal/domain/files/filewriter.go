@@ -58,7 +58,7 @@ func writeAtAppData(fileName string, data []byte) error {
 	}
 
 	appDir := filepath.Join(appData, "PowerSensor")
-	err = os.MkdirAll(appDir, 0755)
+	err := os.MkdirAll(appDir, 0755)
 	if err != nil {
 		return err
 	}
