@@ -2,6 +2,8 @@
 
 A small Go application that extracts system power values from AIDA64 and stores them in a format compatible with FanControl's sensor files.
 
+**This is a hacky and overcomplicated way to do this so i suggest using [AIDA64 Power plugin](https://github.com/HomidWay/FanControl.AIDA64Power) instead**
+
 ## Features
 - Reads power values from AIDA64
 - Outputs data in FanControl sensor format
